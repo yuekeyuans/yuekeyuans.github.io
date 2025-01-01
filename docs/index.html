@@ -1,0 +1,789 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>IWebCore</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.472b142f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.08040f6c.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#iwebcore" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="IWebCore" class="md-header__button md-logo" aria-label="IWebCore" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IWebCore
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              IWebCore 简介
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="IWebCore" class="md-nav__button md-logo" aria-label="IWebCore" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    IWebCore
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          IWebCore 简介
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        IWebCore 简介
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    地址
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    优点
+  </a>
+  
+    <nav class="md-nav" aria-label="优点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c11-qt" class="md-nav__link">
+    c++11 / Qt 平台支持。
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    高效
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    快速开发。
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controller" class="md-nav__link">
+    Controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orm" class="md-nav__link">
+    强大的orm 支持
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-server" class="md-nav__link">
+    内置 http server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    方便的配置方式。
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    运行期错误检查。
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roadmap" class="md-nav__link">
+    稳定的roadmap
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    应用场景
+  </a>
+  
+    <nav class="md-nav" aria-label="应用场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#qt-gui" class="md-nav__link">
+    Qt Gui 等开发帮助
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    微服务开发
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    嵌入式网络开发
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pc" class="md-nav__link">
+    PC端服务器开发
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    代码样式
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="test/" class="md-nav__link">
+        test
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    地址
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    优点
+  </a>
+  
+    <nav class="md-nav" aria-label="优点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c11-qt" class="md-nav__link">
+    c++11 / Qt 平台支持。
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    高效
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    快速开发。
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controller" class="md-nav__link">
+    Controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orm" class="md-nav__link">
+    强大的orm 支持
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-server" class="md-nav__link">
+    内置 http server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    方便的配置方式。
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    运行期错误检查。
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roadmap" class="md-nav__link">
+    稳定的roadmap
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    应用场景
+  </a>
+  
+    <nav class="md-nav" aria-label="应用场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#qt-gui" class="md-nav__link">
+    Qt Gui 等开发帮助
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    微服务开发
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    嵌入式网络开发
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pc" class="md-nav__link">
+    PC端服务器开发
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    代码样式
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="iwebcore">IWebCore 简介</h1>
+<pre float="center">
+ _____  _    _        _      _____
+|_   _|| |  | |      | |    /  __ \
+  | |  | |  | |  ___ | |__  | /  \/  ___   _ __  ___
+  | |  | |/\| | / _ \| '_ \ | |     / _ \ | '__|/ _ \
+ _| |_ \  /\  /|  __/| |_) || \__/\| (_) || |  |  __/
+ \___/  \/  \/  \___||_.__/  \____/ \___/ |_|   \___|
+</pre>
+
+<p><code>IWebCore</code> 是一款基于 <code>c++</code> 的快速开发，高效运行的 网络框架。 它降低<code>c++</code>网络开发的难度，并提高开发效率。</p>
+<p>这个库灵感来源于 <code>Spring</code> , <code>Flask</code>,<code>FastApi</code>, <code>drogon</code> 和其他的网络库。所以如果你了解过其中的一个现代网络库，你可以很轻松的学习<code>IWebCore</code>。</p>
+<hr />
+<h2 id="_1">地址</h2>
+<ul>
+<li>github地址 <a href="https://github.com/yuekeyuans/IWebCore">yuekeyuans/IWebCore (github.com)</a></li>
+<li>文档地址：<a href="http://www.iwebcore.com/">IWebCore文档</a></li>
+</ul>
+<h2 id="_2">优点</h2>
+<h3 id="c11-qt">c++11 / Qt 平台支持。</h3>
+<ul>
+<li>
+<p><strong>大量的c++11库和 Qt 库支持</strong></p>
+</li>
+<li>
+<p><strong>成熟的编程语言</strong></p>
+<p>目前主流的c++开发是基于c++11， 而Qt开发也是 c++ 开发的主流之一。</p>
+</li>
+<li>
+<p><strong>跨平台开发和运行</strong></p>
+<p>软件目前支持在所有Qt能够运行的环境上编译开发，实现软件的跨平台支持。所以开发者可以在windows 上面进行快速开发编译，而在完成开发之后部署到linux主机上面再次编译并运行。 </p>
+</li>
+</ul>
+<h3 id="_3">高效</h3>
+<ul>
+<li>
+<p><strong>降低 内存， cpu 等资源的消耗</strong></p>
+<p>c++ 拥有很高的运行效率，对比与其他的主流网络框架，它能够节省更多内存的使用，cpu使用，进而带动服务器数量的减少和能源消耗的减少，降低碳排放。(参见文章: <a href="https://coolshell.cn/articles/6548.html">Why C++ ? 王者归来 | 酷 壳 - CoolShell</a> )</p>
+</li>
+<li>
+<p>软件运行速度快。</p>
+</li>
+<li>秒速启动运行。</li>
+</ul>
+<h3 id="_4">快速开发。</h3>
+<ul>
+<li>
+<p>易于上手</p>
+<p>c++ 开发很多人觉得困难是因为c++本身带来的复杂性。<code>IWebCore</code> 对于新手非常友好，开发人员初期并不需要了解C++复杂的特性也可以 使用controller，并进行数据库的增删改查等操作。</p>
+</li>
+<li>
+<p>类似Spring和 FastApi 等主流web开发框架</p>
+<p>降低了开发者的学习难度，使用了 <code>宏注解</code> 如 <code>$Controller</code> 等开发者熟悉的方式。</p>
+</li>
+</ul>
+<h3 id="controller">Controller</h3>
+<ul>
+<li>controller 自动注册</li>
+<li>url灵活配置，动态url</li>
+<li>函数参数从请求中动态解析和注入绑定</li>
+<li>灵活的返回方式，可以返回 text,json, xml, status等内容。</li>
+<li>严格的参数检查。</li>
+</ul>
+<h3 id="orm">强大的orm 支持</h3>
+<ul>
+<li>内置 database，table，view， model支持</li>
+<li>table sql 自动生成</li>
+<li>json 原生支持</li>
+<li>内置各种Util转换，可以将 bean 或 bean 的集合转换成 json/string 类型。</li>
+</ul>
+<h3 id="http-server">内置 http server</h3>
+<ul>
+<li>支持 GET， POST，PUT，DELETE, PATCH, OPTION等方法。</li>
+<li>HttpMime, HttpStatus支持。</li>
+<li><strong>TODO:</strong> 在将来的版本中优化tcp请求模型，使用<code>epoll</code>和 <code>IOCP</code> 等方式。</li>
+</ul>
+<h3 id="_5">方便的配置方式。</h3>
+<ul>
+<li>支持 System和 Application两种级别的配置</li>
+<li>提供包括 代码，json, yaml,<code>宏注解</code> 等多种配置方式</li>
+</ul>
+<h3 id="_6">运行期错误检查。</h3>
+<ul>
+<li>
+<p>友好的运行前检查，</p>
+<p>在实例运行之前，会对软件的逻辑进行详细的检查，在有问题的地方生成有好的 warning 或者 fatal 信息</p>
+</li>
+</ul>
+<h3 id="roadmap">稳定的roadmap</h3>
+<ul>
+<li><code>IWebCore</code> 会提供长期的开发，将在roadmap中间设计的内容实现出来。</li>
+</ul>
+<hr />
+<h2 id="_7">应用场景</h2>
+<p>目前<code>IWebCore</code>主要致力于以下场景</p>
+<h3 id="qt-gui">Qt Gui 等开发帮助</h3>
+<p>由于框架本身是基于Qt开发而来的，所以软件可以无缝集成到所有的Qt应用中来提供帮助，主要有两方面：</p>
+<ul>
+<li>为 Qt Gui 提供一个 内置 server 。这样Qt应用既可以使用它向外提供服务，也可以改变Qt的层次结构，即使用 QtGui 做界面，而 IWebCore作为数据源和控制器。</li>
+<li>直接使用<code>IWebCore</code> 的orm模型。<code>IWebCore</code> 内置的 orm 可以简化Qt 和数据库的交互，降低开发难度。</li>
+</ul>
+<h3 id="_8">微服务开发</h3>
+<p><code>IWebCore</code> 将会是一个云原生的网络服务框架。使用<code>IWebCore</code> 作为微服务开发框架将降低开发难度，提高运行效率。</p>
+<h3 id="_9">嵌入式网络开发</h3>
+<p>对于支持 Qt5.12的嵌入式设备，<code>IWebCore</code>提供快捷便利的网络开发。</p>
+<h3 id="pc">PC端服务器开发</h3>
+<p><code>IWebCore</code> 同样能够服务<code>PC</code> 端服务器。</p>
+<hr />
+<h2 id="_10">代码样式</h2>
+<p>下面提供一个最简单的项目代码，只有两个文件<code>main.cpp</code> 和 <code>MyFirstController.h</code></p>
+<p>```cpp linenums='1'
+// main.cpp</p>
+<h1 id="include">include <IWebCore></h1>
+<p>int main(int argc, char *argv[])
+{
+    IWebApplication app(argc, argv);
+    IHttpServer server;
+    server.listen();
+    return app.exec();
+} </p>
+<pre><code>
+``` cpp linenums='1'
+// MyFirstController.h
+#pragma once
+
+#include &lt;IWebCore&gt;
+
+class MyFirstController : public IControllerInterface&lt;MyFirstController&gt;
+{
+    Q_GADGET
+    $AsController(MyFirstController)
+public:
+    $GetMapping(index, /)
+    QString index()
+    {
+        return &quot;hello world&quot;;
+    }
+};
+</code></pre>
+<p>当运行项目的时候，一个webserver 已经创建并运行完成。</p>
+<p>我们可以访问 http://127.0.0.1:8088, 并看到有 hello world 返回。</p>
+<p><img alt="image-20220226193138143" src="./doc/image-20220226193138143.png" /></p>
+<hr />
+<p>在<code>IWebCore</code> 的开发前后，受到很多个方便的帮助，在此表示感谢:</p>
+<ul>
+<li>这款软件的灵感来源是曾经在大学学习并使用过的<code>Spring</code> 框架，虽然现在细节大部分已经忘记，但是<code>Spring</code> 清晰简洁的语法，基于<code>注解</code>方式的开发，<code>Aop</code> 和 <code>Ioc</code> 的思想深深的影响着项目的开发。</li>
+<li>在学习并使用<code>Qt</code>时，<code>Qt</code> 的元对象系统使我想到既然<code>Qt</code>能够支持反射，那么为什么不能基于 <code>Qt</code> 提供的反射系统，来开发一款<code>Web Framework</code> 呢？我当时在工作之余验证了<code>Orm</code> 可以通过反射系统操作，之后也验证了<code>Controller</code> 同样可以使用 <code>Qt</code> 的反射技术，只不过不是基于 <code>Java</code>的包扫描机制，而是通过<code>静态初始化注册</code>(<code>SIR</code>) 机制进行。</li>
+<li>另外之前曾经了解过的<code>node</code>，<code>python</code> 框架同样给了很多的启发，其中有<code>Flask</code>, <code>Django</code>等。其中有一款<code>python</code>框架, <code>FastApi</code>重点推荐，其中好多设计令人耳目一新。</li>
+<li>感谢<code>C++</code> 框架 <a href="https://github.com/drogonframework/drogon">drogon</a>。在看到它之后，我代码中的注册机制全部改成了<code>drogon</code> 的注册机制。代码真的太优秀了。</li>
+<li>本软件中引用了 <a href="https://github.com/jimmiebergmann/mini-yaml">jimmiebergmann/mini-yaml库</a>，同样表示感谢</li>
+<li>感谢 <code>MkDocs</code> ，提供了便利的方式，能够开发出这么精美的文档。</li>
+</ul>
+<p><code>IWebCore</code> 到目前为止，并不完善。好多的<code>feature</code>由于时间原因，将被放到以后的版本中间实现。</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+      
+        
+        <a href="test/" class="md-footer__link md-footer__link--next" aria-label="Next: test" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              test
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d6c3db9e.min.js"></script>
+      
+    
+  </body>
+</html>
