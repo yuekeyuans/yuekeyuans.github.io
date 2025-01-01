@@ -10,9 +10,9 @@
 </pre>
 
 
-`IWebCore` 是一款基于 `c++` 的快速开发，高效运行的 网络框架。 它降低`c++`网络开发的难度，并提高开发效率。
+`IWebCore` 是基于`c++11`的服务器开发框架，它使用户更加专注于开发本身，降低开发难度，提高开发效率。
 
-这个库灵感来源于 `Spring` , `Flask`,`FastApi`, `drogon` 和其他的网络库。所以如果你了解过其中的一个现代网络库，你可以很轻松的学习`IWebCore`。
+基于`Qt`反射技术，`IWebCore`提供了`controller`自动注册，类对象的序列化和反序列化，数据库自动注册和默认操作等一一系列方便你有用的技术支持。 
 
 ---
 
@@ -71,49 +71,20 @@
 
 ### 内置 http server
 
-- 支持 GET， POST，PUT，DELETE, PATCH, OPTION等方法。
+- 支持 `GET`， `POST`，`PUT`，`HEAD` ,`DELETE`, `PATCH`, `OPTION`等方法。
 - HttpMime, HttpStatus支持。
 - **TODO:** 在将来的版本中优化tcp请求模型，使用`epoll`和 `IOCP` 等方式。
 
 ### 方便的配置方式。
 
 - 支持 System和 Application两种级别的配置
-- 提供包括 代码，json, yaml,`宏注解` 等多种配置方式
+- 提供包括 代码，`json`, `yaml`,`宏注解` 等多种配置方式
 
 ### 运行期错误检查。
 
 - 友好的运行前检查，
 
     在实例运行之前，会对软件的逻辑进行详细的检查，在有问题的地方生成有好的 warning 或者 fatal 信息
-
-### 稳定的roadmap
-
-- `IWebCore` 会提供长期的开发，将在roadmap中间设计的内容实现出来。
-
----
-
-## 应用场景
-
-目前`IWebCore`主要致力于以下场景
-
-### Qt Gui 等开发帮助
-
-由于框架本身是基于Qt开发而来的，所以软件可以无缝集成到所有的Qt应用中来提供帮助，主要有两方面：
-
-- 为 Qt Gui 提供一个 内置 server 。这样Qt应用既可以使用它向外提供服务，也可以改变Qt的层次结构，即使用 QtGui 做界面，而 IWebCore作为数据源和控制器。
-- 直接使用`IWebCore` 的orm模型。`IWebCore` 内置的 orm 可以简化Qt 和数据库的交互，降低开发难度。
-
-### 微服务开发
-
-`IWebCore` 将会是一个云原生的网络服务框架。使用`IWebCore` 作为微服务开发框架将降低开发难度，提高运行效率。
-
-### 嵌入式网络开发
-
-对于支持 Qt5.12的嵌入式设备，`IWebCore`提供快捷便利的网络开发。
-
-### PC端服务器开发
-
-`IWebCore` 同样能够服务`PC` 端服务器。
 
 ---
 
@@ -157,18 +128,18 @@ public:
 
 我们可以访问 http://127.0.0.1:8088, 并看到有 hello world 返回。
 
-![image-20220226193138143](./doc/image-20220226193138143.png)
-
----
+![image-20220226193138143](./img/index/image-20220226193138143.png)
 
 
-在`IWebCore` 的开发前后，受到很多个方便的帮助，在此表示感谢:
 
-- 这款软件的灵感来源是曾经在大学学习并使用过的`Spring` 框架，虽然现在细节大部分已经忘记，但是`Spring` 清晰简洁的语法，基于`注解`方式的开发，`Aop` 和 `Ioc` 的思想深深的影响着项目的开发。
-- 在学习并使用`Qt`时，`Qt` 的元对象系统使我想到既然`Qt`能够支持反射，那么为什么不能基于 `Qt` 提供的反射系统，来开发一款`Web Framework` 呢？我当时在工作之余验证了`Orm` 可以通过反射系统操作，之后也验证了`Controller` 同样可以使用 `Qt` 的反射技术，只不过不是基于 `Java`的包扫描机制，而是通过`静态初始化注册`(`SIR`) 机制进行。
-- 另外之前曾经了解过的`node`，`python` 框架同样给了很多的启发，其中有`Flask`, `Django`等。其中有一款`python`框架, `FastApi`重点推荐，其中好多设计令人耳目一新。
-- 感谢`C++` 框架 [drogon](https://github.com/drogonframework/drogon)。在看到它之后，我代码中的注册机制全部改成了`drogon` 的注册机制。代码真的太优秀了。
-- 本软件中引用了 [jimmiebergmann/mini-yaml库](https://github.com/jimmiebergmann/mini-yaml)，同样表示感谢
-- 感谢 `MkDocs` ，提供了便利的方式，能够开发出这么精美的文档。
+第一个 `IWebCore`应用已经开发出来了，想了解更多，可以查看
 
-`IWebCore` 到目前为止，并不完善。好多的`feature`由于时间原因，将被放到以后的版本中间实现。
+- [安装 IWebCore](./guide/install_iwebcore.md)
+- [编写一个网络服务器](./guide/start_a_web_server.md)
+- [使用 orm](./guide/using_orm.md)
+
+
+
+
+
+ 

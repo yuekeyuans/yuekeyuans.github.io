@@ -1,0 +1,1745 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>定义控制器 - IWebCore</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.472b142f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.08040f6c.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IWebCore" class="md-header__button md-logo" aria-label="IWebCore" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IWebCore
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              定义控制器
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IWebCore" class="md-nav__button md-logo" aria-label="IWebCore" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    IWebCore
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        IWebCore 简介
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.en/" class="md-nav__link">
+        Description of IWebCore
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../test/" class="md-nav__link">
+        test
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Biscuit
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Biscuit" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Biscuit
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../biscuit/http_status_code/" class="md-nav__link">
+        Http 状态码
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Controller
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Controller" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Controller
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controller_parameter/" class="md-nav__link">
+        函数参数类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controller_request_params/" class="md-nav__link">
+        函数参数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controller_return_value/" class="md-nav__link">
+        函数返回类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          定义控制器
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        定义控制器
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#spring" class="md-nav__link">
+    Spring 的案例
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    “$” 符号 与 宏注解
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controller" class="md-nav__link">
+    定义 Controller
+  </a>
+  
+    <nav class="md-nav" aria-label="定义 Controller">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    头文件包含
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iwebcore" class="md-nav__link">
+    IWebCore 头文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#icontrollerinterface" class="md-nav__link">
+    IControllerInterface
+  </a>
+  
+    <nav class="md-nav" aria-label="IControllerInterface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    定义
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    停用模板
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ixxxinterface" class="md-nav__link">
+    关于 IxxxInterface 命名规则的问题
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q_gadget" class="md-nav__link">
+    Q_GADGET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ascontroller" class="md-nav__link">
+    $AsController
+  </a>
+  
+    <nav class="md-nav" aria-label="$AsController">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ascontroller_1" class="md-nav__link">
+    $AsController 的两种形式。
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    声明映射函数
+  </a>
+  
+    <nav class="md-nav" aria-label="声明映射函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xxxmapping" class="md-nav__link">
+    $XxxMapping
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url-pattern" class="md-nav__link">
+    url pattern
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q_invokable" class="md-nav__link">
+    Q_INVOKABLE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    映射函数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mapped_function/" class="md-nav__link">
+        处理函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../request_and_response/" class="md-nav__link">
+        请求与响应类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../url_mapping/" class="md-nav__link">
+        Url 规则
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/install_iwebcore/" class="md-nav__link">
+        安装 IWebCore
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/start_a_web_server/" class="md-nav__link">
+        编写一个网络服务器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/using_orm/" class="md-nav__link">
+        使用 orm
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Orm
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Orm" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Orm
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../orm/bean_usage/" class="md-nav__link">
+        Bean usage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../orm/introduction/" class="md-nav__link">
+        Orm 简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../orm/model_usage/" class="md-nav__link">
+        Model 的使用
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Others
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Others" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Others
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/name_regulation/" class="md-nav__link">
+        Name regulation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Roadmap
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Roadmap" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Roadmap
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/introduction/" class="md-nav__link">
+        路线图
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          Task
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Task" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Task
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../task/task/" class="md-nav__link">
+        Task
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          Tips
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tips" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Tips
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/controller_function_parameter/" class="md-nav__link">
+        Controller function parameter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/how_to_use_iwebcore/" class="md-nav__link">
+        如何使用 IWebCore
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/macro_annotation/" class="md-nav__link">
+        宏注解
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/reflection_and_q_gadget/" class="md-nav__link">
+        Qt 反射与 Q_GADGET
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/runtime_assertion/" class="md-nav__link">
+        运行时检查
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/static_initialize_register/" class="md-nav__link">
+        静态初始化注册 SIR
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#spring" class="md-nav__link">
+    Spring 的案例
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    “$” 符号 与 宏注解
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controller" class="md-nav__link">
+    定义 Controller
+  </a>
+  
+    <nav class="md-nav" aria-label="定义 Controller">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    头文件包含
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iwebcore" class="md-nav__link">
+    IWebCore 头文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#icontrollerinterface" class="md-nav__link">
+    IControllerInterface
+  </a>
+  
+    <nav class="md-nav" aria-label="IControllerInterface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    定义
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    停用模板
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ixxxinterface" class="md-nav__link">
+    关于 IxxxInterface 命名规则的问题
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q_gadget" class="md-nav__link">
+    Q_GADGET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ascontroller" class="md-nav__link">
+    $AsController
+  </a>
+  
+    <nav class="md-nav" aria-label="$AsController">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ascontroller_1" class="md-nav__link">
+    $AsController 的两种形式。
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    声明映射函数
+  </a>
+  
+    <nav class="md-nav" aria-label="声明映射函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xxxmapping" class="md-nav__link">
+    $XxxMapping
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url-pattern" class="md-nav__link">
+    url pattern
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q_invokable" class="md-nav__link">
+    Q_INVOKABLE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    映射函数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">定义控制器<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="spring">Spring 的案例<a class="headerlink" href="#spring" title="Permanent link">&para;</a></h2>
+<p>在 web 开发的过程中，最重要的工作之一就是将一个请求映射到一个相关的处理函数当中，使用该函数处理http 请求，并返回相应的内容，我们一般把封装处理函数的类叫做控制器，意思就是控制相应的运行。</p>
+<p>在java或者python 语言中可以使用很简洁的语言就可以完成这样的工作，并且文件中间没有耦合，降低文件的相关性，减低开发的工作量。下面是spring官方提供的代码：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">com.example.demo</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.boot.SpringApplication</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.boot.autoconfigure.SpringBootApplication</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.GetMapping</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.RequestParam</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.RestController</span><span class="p">;</span><span class="w"></span>
+
+<span class="nd">@SpringBootApplication</span><span class="w"></span>
+<span class="nd">@RestController</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DemoApplication</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">SpringApplication</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">DemoApplication</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">hello</span><span class="p">(</span><span class="nd">@RequestParam</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">defaultValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;World&quot;</span><span class="p">)</span><span class="w">   </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="s">&quot;Hello %s!&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>我们可以看到在17-20行，简简单单的4行代码定义一个 处理 <code>/hello</code> url地址 的函数 <code>hello</code>它传入一个 request 行的参数 param,并返回相应的字符串。</p>
+<h2 id="_2">“$” 符号 与 宏注解<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>spring 的 <code>url-函数映射</code>如此简单清晰,以至于后来者一直在模仿。我在思考时也是如此。可惜的是在<code>c++</code> 当中并不支持注解，不支持<code>@</code>符号，也不支持反射。</p>
+<p>但是我在实际操作的时候，发现<code>c++</code> 对于 <code>$</code> 这个符号并没有特殊的限制。于是我想使用 <code>$</code> 这个符号做一个类似 <code>@GetMapping</code> 这样清晰的标记，于是就有了 <code>$GetMapping</code> 这样的标记，这样写在<code>c++</code> 当中可以很清楚的把这些特殊标记符和功能代码分开。<code>$GetMapping</code> 内部实现是基于<code>宏</code>实现的（后面会细讲），那我简单的把这种由宏定义的注解称之为 <code>宏注解</code>具体内容请查看 <a href="../../tips/macro_annotation/">宏注解</a> 。</p>
+<p>在中文<code>c++</code>圈子中有一句话，<code>模板加宏，法力无穷</code>，可见宏在c++中的地位。当然仅仅有宏是不够的，还得需要另外两样东西，<code>反射</code>和<code>SIR</code>（静态初始化注入）。这两个内容和本章节的关系不是太密切，可以查看如下内容</p>
+<ul>
+<li><a href="../../tips/reflection_and_q_gadget/">Qt 反射与 Q_GADGET</a></li>
+<li><a href="../../tips/static_initialize_register/">静态初始化注册</a></li>
+</ul>
+<h2 id="controller">定义 Controller<a class="headerlink" href="#controller" title="Permanent link">&para;</a></h2>
+<p>在上面的准备之后，我们也可以写出类似于<code>Spring</code>这样基于注解的代码。</p>
+<p>在 <a href="../../guide/start_a_web_server/">编写一个网络服务器</a>当中已经给出了一份代码，其中的controller 代码，重新复制在下面以作详细的讲解：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// MyController.h</span>
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;IWebCore&gt;</span><span class="cp"></span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyController</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">IControllerInterface</span><span class="o">&lt;</span><span class="n">MyController</span><span class="o">&gt;</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Q_GADGET</span><span class="w"></span>
+<span class="w">    </span><span class="nf">$AsController</span><span class="p">(</span><span class="n">MyController</span><span class="p">)</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">MyController</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">$GetMapping</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">QString</span><span class="w"> </span><span class="n">index</span><span class="p">();</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+
+<span class="c1">// MyController.cpp</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MyController.h&quot;</span><span class="cp"></span>
+
+<span class="n">QString</span><span class="w"> </span><span class="nf">MyController::index</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;hello world&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>为了方便起见，我把声明和实现的代码放置在一起，实际上他们是分开的。</p>
+<h3 id="_3">头文件包含<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>在代码第二行是防止头文件被多次包含， <code>#pragma once</code> 这个是 msvc式的声明，与之相对的还有gcc式的声明：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#ifndef __MYCONTROLLER_H__</span>
+<span class="cp">#define __MYCONTROLLER_H__</span>
+<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="c1">// 声明、定义语句</span>
+<span class="cp">#endif</span>
+</code></pre></div>
+<p>两者没有明显的区别，但是如果定义了同名类，第二种方式有可能漏掉包含。而且 由于我们使用的c++版本比较高级，所以第一种在编译器支持上是没有问题的。</p>
+<h3 id="iwebcore">IWebCore 头文件<a class="headerlink" href="#iwebcore" title="Permanent link">&para;</a></h3>
+<p>在代码第4行，发现我们只包含了一个头文件, <code>IWebCore</code> 这个文件定义在 <code>src</code> 文件夹当中: 内容如下：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#pragma once</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;assertion/assertion&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;base/base&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;bean/bean&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;log/log&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;configuration/configuration&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;controller/controller&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;common/common&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;server/IHttpServer.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;process/process&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;orm/orm&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;test/test&quot;</span><span class="cp"></span>
+
+<span class="n">$PackageWebCoreUsing</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p><code>IWebCore</code> 包含了所有有必要导出的头文件，包含这一个头文件之后，可以不用包含其他文件，当然，如果开发者觉得包含的头文件过多，编译起来有点困难，也可以把这个头文件设置成 预编译头文件:</p>
+<div class="highlight"><pre><span></span><code><span class="na">PRECOMPILED_HEADER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">IWebCore</span><span class="w"></span>
+</code></pre></div>
+<p>当然你也可以不使用这个头文件。如果你熟悉代码，也可以包含独立的头文件,成为以下的格式：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;controller/IControllerManage.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;controller/IControllerInterface.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;controller/pp/IControllerPreProcessor.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;controller/pp/IGetMappingPreProcessor.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;configuration/IConfigurationManage.h&gt;</span><span class="cp"></span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">IWebCore</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>特别要提到的一点就是 <code>IWebCore</code>定义第15行<code>$PackageWebCoreUsing</code>  这是一个宏。 展开后就是上面代码的第6行</p>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">IWebCore</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>实际上整个 IWebCore代码 都是 在<code>IWebCore</code> 名称空间下面的。所以，如果当你定义的类或者函数与IWebCore 的有冲突，可以为相应的名称加上 名字空间<code>IWebCore</code></p>
+<h3 id="icontrollerinterface">IControllerInterface<a class="headerlink" href="#icontrollerinterface" title="Permanent link">&para;</a></h3>
+<p>在代码第6行，我们声明了一个类名称 <code>MyController</code>, 并且以 <code>public</code>的形式继承<code>IControllerInterface</code>模板基类， 模板参数就是我们定义的controller 名称。</p>
+<h4 id="_4">定义<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>模板基类对于新手有点绕，不明白直接用也没有问题。</p>
+<p>IControllerInterface的定义如下:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">class</span><span class="w"> </span><span class="nc">IControllerInterface</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">IControllerTaskUnit</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">enabled</span><span class="o">&gt;</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">IControllerInterface</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">IControllerInterface</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">task</span><span class="p">()</span><span class="w"> </span><span class="k">final</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">protected</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">registerControllerFun</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">handler</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">QMap</span><span class="o">&lt;</span><span class="n">QString</span><span class="p">,</span><span class="w"> </span><span class="n">QString</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">clsInfo</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                </span><span class="k">const</span><span class="w"> </span><span class="n">QVector</span><span class="o">&lt;</span><span class="n">QMetaMethod</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">methods</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">enabled</span><span class="o">&gt;</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="n">IControllerInterface</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">enabled</span><span class="o">&gt;::</span><span class="n">task</span><span class="p">(){</span><span class="w"></span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">inst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">T</span><span class="o">::</span><span class="n">instance</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">clsInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IMetaUtil</span><span class="o">::</span><span class="n">getMetaClassInfoMap</span><span class="p">(</span><span class="n">T</span><span class="o">::</span><span class="n">staticMetaObject</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">methods</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IMetaUtil</span><span class="o">::</span><span class="n">getMetaMethods</span><span class="p">(</span><span class="n">T</span><span class="o">::</span><span class="n">staticMetaObject</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">registerControllerFun</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span><span class="w"> </span><span class="n">clsInfo</span><span class="p">,</span><span class="w"> </span><span class="n">methods</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>这个东西简单来说就是将 controller 类 T 通过 task 函数注册到一个地方，IControllerManage 这样的一个池子里,等待请求来临时可以查找 IControllerManage 池子里面匹配相应url的函数，再调用这个函数。具体如何注册，可以查看<a href="../../tips/static_initialize_register/">静态初始化注册</a> 以及 <a href="../../task/task/">Task</a></p>
+<h4 id="_5">停用模板<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>还有一点需要注意的是： IControllerInterface 基类有两个模板参数：</p>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">class</span><span class="w"> </span><span class="nc">IControllerInterface</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">IControllerTaskUnit</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">enabled</span><span class="o">&gt;</span><span class="w"></span>
+</code></pre></div>
+<p>第一个 <code>typename T</code> 是要注册的 controller 类， 而第二个 <code>bool enabled = true</code> 这个bool 类型的默认模板参数的作用是是否向 IControllerManage注册 这个controller，并使这个controller 生效。</p>
+<p>所以，当你已经定义了一个 controller,但是暂时不需要这个controller, 但是又不能删除，可以将第二个模板参数设置为 false，如下：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// MyController.h</span>
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;IWebCore&gt;</span><span class="cp"></span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyController</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">IControllerInterface</span><span class="o">&lt;</span><span class="n">MyController</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="o">&gt;</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Q_GADGET</span><span class="w"></span>
+<span class="w">    </span><span class="nf">$AsController</span><span class="p">(</span><span class="n">MyController</span><span class="p">)</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">MyController</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">$GetMapping</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">QString</span><span class="w"> </span><span class="n">index</span><span class="p">();</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>这样，MyController就不会生效。</p>
+<h4 id="ixxxinterface">关于 IxxxInterface 命名规则的问题<a class="headerlink" href="#ixxxinterface" title="Permanent link">&para;</a></h4>
+<p>在这里插入一个话题，就是基类的命名问题。</p>
+<p>在<code>IWebCore</code> 的编写过程中，有很多不同功能的类，宏注解，函数，命名空间等等内容，不同的类型的内容有自己独特的前缀或后缀方式，详情请参考<a href="../../others/name_regulation/">命名规则</a></p>
+<p>对于类型接口，接口的名称都是<code>IxxxInterface</code> 这种格式的，比如这里的<code>IControllerInterface</code> 以后会接触到的<code>IOrmTableInterface</code> , <code>IConfigurationInterface</code> 等等类型。所以在编写代码的时候，IDE 会给出好多中提示，我们一般是选择以 Interface 结尾的名称作为基类。</p>
+<h3 id="q_gadget">Q_GADGET<a class="headerlink" href="#q_gadget" title="Permanent link">&para;</a></h3>
+<p>在<code>MyController.h</code> 第8行有 <code>Q_GADGET</code> 声明。 关于 <code>Q_GADGET</code> 的内容可以查看<a href="../../tips/reflection_and_q_gadget/">Qt 反射与 Q_GADGET</a>,这里简要作为说明。</p>
+<p>Q_GADGET 有两点作用</p>
+<ul>
+<li>
+<p>第一,是Qt实现反射的基础。</p>
+<p>有熟悉Qt 的开发者接触最多的应该是 Q_OBJECT。 而Q_GADGET 是一个轻量级的Q_OBJECT，它包含Qt反射所需要的最小集合。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#define Q_GADGET \</span>
+<span class="cp">public: \</span>
+<span class="cp">    static const QMetaObject staticMetaObject; \</span>
+<span class="cp">    void qt_check_for_QGADGET_macro(); \</span>
+<span class="cp">    typedef void QtGadgetHelper; \</span>
+<span class="cp">private: \</span>
+<span class="cp">    QT_WARNING_PUSH \</span>
+<span class="cp">    Q_OBJECT_NO_ATTRIBUTES_WARNING \</span>
+<span class="cp">    Q_DECL_HIDDEN_STATIC_METACALL static void qt_static_metacall(QObject *, QMetaObject::Call, int, void **); \</span>
+<span class="cp">    QT_WARNING_POP \</span>
+<span class="cp">    QT_ANNOTATE_CLASS(qt_qgadget, &quot;&quot;)</span>
+</code></pre></div></td></tr></table></div>
+<p>可以看见它里面包含了一个 staticMetaObject对象。这个对象里面能够反射出类当中被标记出来的 classinfo,method,property,enum, className 等信息，使用这些信息就可以操纵这个类的对象。</p>
+</li>
+<li>
+<p>第二， Qt 当中有 moc 编译器，这个moc 编译器的作用就是根据当前被标记有Q_GADGET 或者Q_OBJECT的类声明，生成一个带有类信息的moc_xxx.cpp文件。供 staticMetaObject 来解析。</p>
+</li>
+</ul>
+<p>所以这里我们使用 Q_GADGET 这个宏很明显的作用就是要使 MyController 这个类能够被反射，其内部结构能够被掌握。比如说，我们在这里使用的 <code>$GetMapping</code> 所标记的 url 和函数 <code>index</code>之间的映射信息；函数<code>index</code> 的信息等。</p>
+<p>总而言之，我们这里使用Q_GADGET的作用使这个类能够被反射到。</p>
+<h3 id="ascontroller">$AsController<a class="headerlink" href="#ascontroller" title="Permanent link">&para;</a></h3>
+<p>在<code>MyController.h</code> 中间第9 行出现<code>$AsController(MyController)</code>。这同样使一个宏注解，和最上面的<code>@RestController</code> 大概意思是相同的，都是用来标记这是一个controller。不过 <code>$AsController</code> 需要至少一个参数。</p>
+<h4 id="ascontroller_1">$AsController 的两种形式。<a class="headerlink" href="#ascontroller_1" title="Permanent link">&para;</a></h4>
+<p><code>AsController</code> 宏注解有两种重载形式，分别为：</p>
+<ul>
+<li>
+<p><code>#define $AsController_1(klassName)</code></p>
+<p>只有一个参数的 $AsController 传入的是类的名称。</p>
+<p>klassName 名称的传入目的是在<code>宏注解</code>当中实现一些<code>controller</code>当中共同的函数，比如说定义单例，重载基类的相关函数等。</p>
+</li>
+<li>
+<p><code>#define $AsController_2(klassName, path)</code></p>
+<p>有两个参数的 $AsController 第一个参数传入的是类的名称，第二个参数则是这个 controller 所有的url 映射的前缀。</p>
+<p>比如说当path 的参数是 <code>abc</code>, 那么在这个函数中间映射的所有url 的前面都要加上 <code>abc</code>。比如说当<code>$GetMapping</code> 的url 参数是 <code>hello</code>, 那么其实际映射的url 就是 <code>/abc/hello</code></p>
+</li>
+</ul>
+<p>这里使用了 <code>宏重载</code> 的技术，有不了解而想了解的开发者可以自行学习。</p>
+<p>同样，<code>$AsXXX</code> 也是一种命名规范，请参考 <a href="../../others/name_regulation/">命名规范</a></p>
+<h3 id="_6">声明映射函数<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>在<code>MyController.h</code> 的13-14行声明如下</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">    </span><span class="n">$GetMapping</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">QString</span><span class="w"> </span><span class="n">index</span><span class="p">();</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>这里的作用是声明一个index函数并将 index 函数映射到 <code>/</code> 的url 上面， index 函数返回一个字符串。</p>
+<h4 id="xxxmapping">$XxxMapping<a class="headerlink" href="#xxxmapping" title="Permanent link">&para;</a></h4>
+<p>$GetMapping 是映射到 <code>GET</code> 请求当中。除此以外还有另外集中 mapping 宏注解</p>
+<ul>
+<li>$PostMapping 用于映射POST 请求</li>
+<li>$PutMapping 用于映射PUT 请求</li>
+<li>$DeleteMapping 用于映射DELETE 请求</li>
+<li>PatchMapping 用于映射PATCH请求</li>
+</ul>
+<p>除这些常规请求以外，还有一种 <code>OPTION</code> 请求和 <code>HEAD</code>请求。</p>
+<p>根据 rfc, <code>HEAD</code> 请求会被解析成<code>GET</code> 请求，返回首行和headers,但是不反回body 内容。所以这种请求不需要单独使用宏注解</p>
+<p><code>OPTIONS</code> 请求会返回当前url所支持的请求类型，同样不需要宏注解。</p>
+<p>另外，在另外一种Controller 类型, <code>IStatusController</code> 类型当中，有 $StatusMapping注解，这里只列不表。</p>
+<p>这些 $xxxMapping至少需要一个参数。我们以 <code>$GetMapping</code> 为例，删减了部分代码，其定义如下</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#define $GetMapping_1(funName)  \</span>
+<span class="cp">    $GetMappingDeclare(funName) \</span>
+<span class="cp">    Q_INVOKABLE</span>
+
+<span class="cp">#define $GetMapping_2(funName, url1)  \</span>
+<span class="cp">    $GetMappingDeclare(funName, url1) \</span>
+<span class="cp">    Q_INVOKABLE</span>
+
+<span class="cp">#define $GetMapping_3(funName, url1, url2)  \</span>
+<span class="cp">    $GetMappingDeclare(funName, url1, url2) \</span>
+<span class="cp">    Q_INVOKABLE</span>
+
+<span class="cp">#define $GetMapping_4(funName, url1, url2, url3)  \</span>
+<span class="cp">    $GetMappingDeclare(funName, url1, url2, url3) \</span>
+<span class="cp">    Q_INVOKABLE</span>
+
+<span class="cp">#define $GetMapping_5(funName, url1, url2, url3, url4)  \</span>
+<span class="cp">    $GetMappingDeclare(funName, url1, url2, url3, url4) \</span>
+<span class="cp">    Q_INVOKABLE</span>
+
+<span class="cp">#define $GetMapping_6(funName, url1, url2, url3, url4, url5)  \</span>
+<span class="cp">    $GetMappingDeclare(funName, url1, url2, url3, url4, url5) \</span>
+<span class="cp">    Q_INVOKABLE</span>
+
+<span class="cp">#define $GetMapping_7(funName, url1, url2, url3, url4, url5, url6)  \</span>
+<span class="cp">    $GetMappingDeclare(funName, url1, url2, url3, url4, url5, url6) \</span>
+<span class="cp">    Q_INVOKABLE</span>
+
+<span class="cp">#define $GetMapping_8(funName, url1, url2, url3, url4, url5, url6, url7)  \</span>
+<span class="cp">    $GetMappingDeclare(funName, url1, url2, url3, url4, url5, url6, url7) \</span>
+<span class="cp">    Q_INVOKABLE</span>
+
+<span class="cp">#define $GetMapping_9(funName, url1, url2, url3, url4, url5, url6, url7, url8)  \</span>
+<span class="cp">    $GetMappingDeclare(funName, url1, url2, url3, url4, url5, url6, url7, url8) \</span>
+<span class="cp">    Q_INVOKABLE</span>
+
+<span class="cp">#define $GetMapping_(N) $GetMapping_##N</span>
+<span class="cp">#define $GetMapping_EVAL(N) $GetMapping_(N)</span>
+<span class="cp">#define $GetMapping(...) PP_EXPAND( $GetMapping_EVAL(PP_EXPAND( PP_NARG(__VA_ARGS__) ))(__VA_ARGS__) )</span>
+</code></pre></div></td></tr></table></div>
+<p>可以看见第一个参数永远时 对应的函数名称， 否则就不正确。</p>
+<p>当只有一个参数时，对应的函数映射到当前controller 的根目录。也就是<code>/</code>目录。当controller 没有指定目录时，</p>
+<p>第2个到第9个参数是 不同的url,最多一共可以有8个不同的url映射到同一个函数当中。</p>
+<h4 id="url-pattern">url pattern<a class="headerlink" href="#url-pattern" title="Permanent link">&para;</a></h4>
+<p>写在 <code>$XxxMapping</code> 中的url 不仅是静态的，而且是可以动态映射的。比如当 url 是<code>/&lt;name:string&gt;/&lt;age:int&gt;</code>这种格式时，它表示url 的第一个参数时<code>string</code> 类型的，而映射系统会保留这个参数以 name 的形式传给函数。第二个参数 <code>&lt;age:int&gt;</code>则表示这个参数必须能够转换成 int 类型，如果转换不成，这个url就不会被匹配。第二个参数会被赋值到 name, 传给 函数使用。</p>
+<p>关于具体的url如何使用，请参考 <a href="../url_mapping/">Url 定义</a></p>
+<h4 id="q_invokable">Q_INVOKABLE<a class="headerlink" href="#q_invokable" title="Permanent link">&para;</a></h4>
+<p>在 Qt 的元对象系统当中，如何让一个内部的函数被对象系统了解，并且能够做出反射？ 答案就是在这个函数面前添加 <code>Q_INVOKABLE</code>。</p>
+<p>当函数添加<code>Q_INVOKABLE</code>之后，<code>moc</code>工具会记录当前函数的所有信息，生成在 moc_xxx.cpp 文件当中。记录的信息包括但不限于</p>
+<ul>
+<li>函数名称，函数签名</li>
+<li>函数返回值和返回值类型和 对象返回值类型的 MetaType</li>
+<li>函数各个参数类型，参数名称和参数类型的 MetaType</li>
+<li>函数的引用本身，是函数可以通过 invokeOnGadget 被调用。</li>
+</ul>
+<p>这个也是 <code>Qt</code> signal/slots的基础之一。不过在实现 <code>IWebCore</code> 时，并没有使用 signal/slots，而是使用了原始的反射系统，signal/slots 使用起来反而不方便。</p>
+<p>所以我们可以看见，所有的 <code>$XxxMapping</code>宏注解后面都有一个 <code>Q_INVOKABLE</code> 跟着。这个也就意味着宏注解后面得跟上一个函数，否则编译器在宏处理这个阶段就会报错，同样，<code>$XxxMapping</code> 不能堆叠使用。这个也会报错。</p>
+<p>凡是都有例外，我们也可以使用 <code>$MappingDeclare</code> 这种形式来进行定义 。比如我们想让一个函数有多个 能够匹配多个类型的调用，我们可以写代码如下</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">    </span><span class="n">$GetMappingDeclare</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">$PostMappingDeclare</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">$PutMappingDeclare</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">$DeleteMappingDeclare</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">$PatchMappingDeclare</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="o">/</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">Q_INVOKABLE</span><span class="w"> </span><span class="n">IJsonResponse</span><span class="w"> </span><span class="n">index</span><span class="p">();</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>这样，所有的请求都 mapping 到  <code>index</code> 函数。</p>
+<h4 id="_7">映射函数<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>映射函数是指被 url 映射的函数。它有特定的要求，比如说不能是重载函数，函数参数不能有默认值等等的要求。这里不做详细的讲解，具体请看 <a href="../mapped_function/">映射函数</a>。这一章节。</p>
+<p>在 <code>MyController</code> 案例中，函数返回值是 <code>QString</code> 类型。在解析的过程中， QString 类型的一般将被解析成 <code>plain/text</code> 这样的 <code>mime</code> 类型， 表示这是一个普通的字符串类型。</p>
+<p>剧透一点：如果 返回的字符串 是 "$json:[1,2,3,4]", 那么返回的类型是 json 类型的。返回json类型的数据也可以使用 <code>IJsonResponse</code> 这样的类型，返回 QJsonObject,等， 也可以使用 "[1,2,3]"_json  这种格式返回。 </p>
+<h2 id="_8">总结<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>关于Controller的详细讲解到此为止。之后的内容，如 <code>Q_GADGET</code>这种东西会默认开发者已经了解。如果有不清楚的可以回头看看这一章节，或者看看 <a href="https://doc.qt.io/">Qt Documentation | Home</a>。当然把它当作装饰性的东西也并不影响开发。</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../controller_return_value/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 函数返回类型" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              函数返回类型
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../mapped_function/" class="md-footer__link md-footer__link--next" aria-label="Next: 处理函数" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              处理函数
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d6c3db9e.min.js"></script>
+      
+    
+  </body>
+</html>

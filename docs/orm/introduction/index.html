@@ -1,0 +1,1673 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>Orm 简介 - IWebCore</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.472b142f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.08040f6c.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#orm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IWebCore" class="md-header__button md-logo" aria-label="IWebCore" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IWebCore
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Orm 简介
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IWebCore" class="md-nav__button md-logo" aria-label="IWebCore" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    IWebCore
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        IWebCore 简介
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.en/" class="md-nav__link">
+        Description of IWebCore
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../test/" class="md-nav__link">
+        test
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Biscuit
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Biscuit" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Biscuit
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../biscuit/http_status_code/" class="md-nav__link">
+        Http 状态码
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Controller
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Controller" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Controller
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../controller/controller_parameter/" class="md-nav__link">
+        函数参数类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../controller/controller_request_params/" class="md-nav__link">
+        函数参数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../controller/controller_return_value/" class="md-nav__link">
+        函数返回类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../controller/define_controller/" class="md-nav__link">
+        定义控制器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../controller/mapped_function/" class="md-nav__link">
+        处理函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../controller/request_and_response/" class="md-nav__link">
+        请求与响应类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../controller/url_mapping/" class="md-nav__link">
+        Url 规则
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/install_iwebcore/" class="md-nav__link">
+        安装 IWebCore
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/start_a_web_server/" class="md-nav__link">
+        编写一个网络服务器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/using_orm/" class="md-nav__link">
+        使用 orm
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Orm
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Orm" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Orm
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bean_usage/" class="md-nav__link">
+        Bean usage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Orm 简介
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Orm 简介
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bean" class="md-nav__link">
+    Bean 的创建
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table" class="md-nav__link">
+    Table 的创建
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database" class="md-nav__link">
+    DataBase 的创建
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#orm-model" class="md-nav__link">
+    Orm Model 的创建
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_usage/" class="md-nav__link">
+        Model 的使用
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Others
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Others" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Others
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/name_regulation/" class="md-nav__link">
+        Name regulation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Roadmap
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Roadmap" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Roadmap
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/introduction/" class="md-nav__link">
+        路线图
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          Task
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Task" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Task
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../task/task/" class="md-nav__link">
+        Task
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          Tips
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tips" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Tips
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/controller_function_parameter/" class="md-nav__link">
+        Controller function parameter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/how_to_use_iwebcore/" class="md-nav__link">
+        如何使用 IWebCore
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/macro_annotation/" class="md-nav__link">
+        宏注解
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/reflection_and_q_gadget/" class="md-nav__link">
+        Qt 反射与 Q_GADGET
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/runtime_assertion/" class="md-nav__link">
+        运行时检查
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/static_initialize_register/" class="md-nav__link">
+        静态初始化注册 SIR
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bean" class="md-nav__link">
+    Bean 的创建
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table" class="md-nav__link">
+    Table 的创建
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database" class="md-nav__link">
+    DataBase 的创建
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#orm-model" class="md-nav__link">
+    Orm Model 的创建
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="orm">Orm 简介<a class="headerlink" href="#orm" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>orm 包括了 bean table, view, model 和数据库等一系列的内容，目的是使开发者方便的对数据进行操作，以及使用数据库进行增删改查</p>
+</blockquote>
+<p>下面我们开始一个例子</p>
+<p>首先我们创建一个 IWebCore 应用。关于如何创建IWebCore应用，参考<a href="../../tips/how_to_use_iwebcore/">IWebCore使用方式</a></p>
+<h2 id="bean">Bean 的创建<a class="headerlink" href="#bean" title="Permanent link">&para;</a></h2>
+<p>在项目当中，我们创建一个UserBean, 头文件如下:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// UserBean.h</span>
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;IWebCore&gt;</span><span class="cp"></span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">UserBean</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">IBeanInterface</span><span class="o">&lt;</span><span class="n">UserBean</span><span class="o">&gt;</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Q_GADGET</span><span class="w"></span>
+<span class="w">    </span><span class="nf">$AsBean</span><span class="p">(</span><span class="n">UserBean</span><span class="p">)</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">UserBean</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">$BeanField</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">$BeanFieldDeclare</span><span class="p">(</span><span class="n">QString</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">QString</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">$BeanFieldDeclare</span><span class="p">(</span><span class="n">QString</span><span class="p">,</span><span class="w"> </span><span class="n">country</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">QString</span><span class="w"> </span><span class="n">country</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;CHINA&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>bean 的定义需要：<ul>
+<li>以 public 方式继承 IBeanInterface</li>
+<li>使用 <code>Q_GADGET</code> 和 <code>$AsBean(klassName)</code> 两个宏</li>
+</ul>
+</li>
+<li>字段的定义也有两种方式：<ul>
+<li>使用 <code>$BeanField(type, name)</code> 来定义一个字段,如上面第13 行</li>
+<li>使用 <code>$BeanFieldDeclare(type, name)</code> 来声明一个字段， 之后再写上 type name; 定义字段，如15-16行 和  18-19 行所示。</li>
+</ul>
+</li>
+</ul>
+<p>源文件如下：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// UserBean.cpp</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;UserBean.h&quot;</span><span class="cp"></span>
+
+<span class="n">UserBean</span><span class="o">::</span><span class="n">UserBean</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>我们重新写 main.cpp，用于输出UserBean, 代码如下， 输出也一起写到代码里面，供参考</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// main.cpp</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;IWebCore&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;UserBean.h&quot;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Q_UNUSED</span><span class="p">(</span><span class="n">argc</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">Q_UNUSED</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">UserBean</span><span class="w"> </span><span class="n">bean</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">qDebug</span><span class="p">().</span><span class="n">noquote</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">bean</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// {&quot;age&quot;:0,&quot;country&quot;:&quot;CHINA&quot;,&quot;name&quot;:&quot;&quot;}</span>
+
+<span class="w">    </span><span class="n">qDebug</span><span class="p">().</span><span class="n">noquote</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">QString</span><span class="o">&gt;</span><span class="p">(</span><span class="w"> </span><span class="n">bean</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// {&quot;age&quot;:0,&quot;country&quot;:&quot;CHINA&quot;,&quot;name&quot;:&quot;&quot;}</span>
+
+<span class="w">    </span><span class="n">qDebug</span><span class="p">().</span><span class="n">noquote</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">bean</span><span class="p">.</span><span class="n">toString</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// {&quot;age&quot;:0,&quot;country&quot;:&quot;CHINA&quot;,&quot;name&quot;:&quot;&quot;}</span>
+
+<span class="w">    </span><span class="n">qDebug</span><span class="p">().</span><span class="n">noquote</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">bean</span><span class="p">.</span><span class="n">toJson</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// QJsonObject({&quot;age&quot;:0,&quot;country&quot;:&quot;CHINA&quot;,&quot;name&quot;:&quot;&quot;})</span>
+
+<span class="w">    </span><span class="n">qDebug</span><span class="p">().</span><span class="n">noquote</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">bean</span><span class="p">.</span><span class="n">toVariantMap</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// QMap((age, QVariant(int, 0))(country, QVariant(QString, CHINA))(name, QVariant(QString, )))</span>
+
+<span class="w">    </span><span class="n">bean</span><span class="p">.</span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">27</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">bean</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;yuekeyuan&quot;</span><span class="p">;</span><span class="w"></span>
+
+
+<span class="w">    </span><span class="n">QJsonObject</span><span class="w"> </span><span class="n">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bean</span><span class="p">.</span><span class="n">toJson</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">qDebug</span><span class="p">().</span><span class="n">noquote</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">json</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// QJsonObject({&quot;age&quot;:27,&quot;country&quot;:&quot;CHINA&quot;,&quot;name&quot;:&quot;yuekeyuan&quot;})</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">bean1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UserBean</span><span class="o">::</span><span class="n">fromJson</span><span class="p">(</span><span class="n">json</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">qDebug</span><span class="p">().</span><span class="n">noquote</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">bean</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">bean1</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">bean1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// true {&quot;age&quot;:27,&quot;country&quot;:&quot;CHINA&quot;,&quot;name&quot;:&quot;yuekeyuan&quot;}</span>
+
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">convertOk</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">bean2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IConvertUtil</span><span class="o">::</span><span class="n">toBean</span><span class="o">&lt;</span><span class="n">UserBean</span><span class="o">&gt;</span><span class="p">(</span><span class="n">json</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">convertOk</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">qDebug</span><span class="p">().</span><span class="n">noquote</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">convertOk</span><span class="w">  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">bean</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">bean2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">bean2</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// true true {&quot;age&quot;:27,&quot;country&quot;:&quot;CHINA&quot;,&quot;name&quot;:&quot;yuekeyuan&quot;}</span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>上面是一个 bean 的一些支持方法展示。bean 内置方法很多， 想具体了解可以参考 <a href="../bean_usage/">Bean</a>。</p>
+<h2 id="table">Table 的创建<a class="headerlink" href="#table" title="Permanent link">&para;</a></h2>
+<p>Table 是继承于 Bean 并添加一些数据库表相关的内容</p>
+<p>下面我们同样创建一个 <code>UserTable</code> 来展示 代码</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// UserTable.h</span>
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;IWebCore&gt;</span><span class="cp"></span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">UserTable</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">IOrmTableInterface</span><span class="o">&lt;</span><span class="n">UserTable</span><span class="o">&gt;</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Q_GADGET</span><span class="w"></span>
+<span class="w">    </span><span class="nf">$AsTable</span><span class="p">(</span><span class="n">UserTable</span><span class="p">)</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">UserTable</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">$AutoGenerate</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">$PrimaryKey</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">$Column</span><span class="p">(</span><span class="kt">int64_t</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">$Column</span><span class="p">(</span><span class="n">QString</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">$ColumnDeclare</span><span class="p">(</span><span class="n">QString</span><span class="p">,</span><span class="w"> </span><span class="n">country</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">QString</span><span class="w"> </span><span class="n">country</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;CHINA&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// UserTable.cpp</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;UserTable.h&quot;</span><span class="cp"></span>
+
+<span class="n">UserTable</span><span class="o">::</span><span class="n">UserTable</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>Table 的定义和 Bean 的定义很相似</p>
+<ul>
+<li>
+<p>Table 以 public 方式 继承 IOrmTableInterface.</p>
+</li>
+<li>
+<p>使用 <code>Q_GADGET</code> 和 <code>$AsTable(klassName)</code> 标注类</p>
+</li>
+<li>
+<p>有两种 方式定义一个字段：</p>
+<ul>
+<li>以 $Column(type, name) 定义一个字段， 如 第15行</li>
+<li>以  $ColumnDeclare(type, name) 声明一个字段， 并 以 type name; 的方式定义字段。如 19-20 行。</li>
+</ul>
+</li>
+<li>
+<p>同样我们看到 13行， 14行，这是定义一个 主键的标配。 <code>$PrimaryKey(name)</code> 定义 name 字段是一个 主键字段。 <code>$AutoGenerate(name)</code> 定义主键name 的产生方式。</p>
+</li>
+<li>
+<p>在这些宏之外，还有一些宏</p>
+<ul>
+<li><code>$NotNull(name)</code> </li>
+<li><code>$Unique(name)</code></li>
+<li><code>$SqlType(name, sqlType)</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="database">DataBase 的创建<a class="headerlink" href="#database" title="Permanent link">&para;</a></h2>
+<p>IWebOrm 包装了 Qt 的 关系型数据库，并使它更好用。方便起见，我们创建一个 Sqlite 的数据库：</p>
+<p>创建 SqliteDataBase 如下：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// SqliteDatabase.h</span>
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;IWebCore&gt;</span><span class="cp"></span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SqliteDatabase</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">IOrmDatabaseInterface</span><span class="o">&lt;</span><span class="n">SqliteDatabase</span><span class="o">&gt;</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">$AsDatabase</span><span class="p">(</span><span class="n">SqliteDatabase</span><span class="p">)</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">SqliteDatabase</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">IOrmDataSource</span><span class="w"> </span><span class="nf">configDataSource</span><span class="p">()</span><span class="w"> </span><span class="k">final</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">registerTables</span><span class="p">()</span><span class="w"> </span><span class="k">final</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>database 的创建需要以 public 方式继承 IOrmDatabaseInterface</li>
+<li>使用    <code>$AsDatabase(klassName)</code> 来标记类为 一个 Database类</li>
+<li>重载 configDataSource 和 registerTables 两个函数。</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// SqliteDatabase.cpp</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;SqliteDatabase.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;UserTable.h&quot;</span><span class="cp"></span>
+
+<span class="n">SqliteDatabase</span><span class="o">::</span><span class="n">SqliteDatabase</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">IOrmDataSource</span><span class="w"> </span><span class="n">SqliteDatabase</span><span class="o">::</span><span class="n">configDataSource</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">IOrmDataSource</span><span class="w"> </span><span class="n">source</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">source</span><span class="p">.</span><span class="n">driverName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;QSQLITE&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">source</span><span class="p">.</span><span class="n">databaseName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SqliteDatabase.db&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">source</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">SqliteDatabase</span><span class="o">::</span><span class="n">registerTables</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">registerTable</span><span class="o">&lt;</span><span class="n">UserTable</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>configDataSource 返回一个封装好的 dataSource 用于创建 database</li>
+<li>registerTables 注册 UserBean。<ul>
+<li>这里的注册会检查数据库中是否有 UserTable, 如果没有的化，根据于 table 的定义生成创建 table 的sql。当然，开发者也可以在 registerTable 函数中传入 一个QString 类型的sql 用于创建 sql。</li>
+</ul>
+</li>
+</ul>
+<p>现在我们修改 main.cpp 到如下模型：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// main.cpp</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;IWebCore&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;UserBean.h&quot;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">IWebApplication</span><span class="w"> </span><span class="n">app</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">app</span><span class="p">.</span><span class="n">exec</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>运行代码，会有如下输出：</p>
+<div class="highlight"><pre><span></span><code> _____  _    _        _      _____
+|_   _|| |  | |      | |    /  __ \
+  | |  | |  | |  ___ | |__  | /  \/  ___   _ __  ___
+  | |  | |/\| | / _ \| &#39;_ \ | |     / _ \ | &#39;__|/ _ \
+ _| |_ \  /\  /|  __/| |_) || \__/\| (_) || |  |  __/
+ \___/  \/  \/  \___||_.__/  \____/ \___/ |_|   \___|
+
+Load SystemEnvironment
+[√]  Auto Load Resource Task Finish
+[√]  Database At Class: webCore::IOrmDataSource, At Connection: default, At Db: SqliteDatabase.db, Opened
+</code></pre></div>
+<p>看见在第10行， Database 已经创建。 </p>
+<p>我们打开 <code>SqliteDatabase.db</code> 查看数据库如下：</p>
+<p><img alt="image-20220226001824908" src="../img/introduction/image-20220226001824908.png" /></p>
+<p>看见 数据表 UserTable 已经自动创建。</p>
+<h2 id="orm-model">Orm Model 的创建<a class="headerlink" href="#orm-model" title="Permanent link">&para;</a></h2>
+<p>现在已经创建数据表和数据库，我们在创建 model 用于操纵数据表和数据库</p>
+<p>创建 UserModel 如下：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// UserModel.h</span>
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;IWebCore&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;UserTable.h&quot;</span><span class="cp"></span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">UserModel</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">IOrmTableModelInterface</span><span class="o">&lt;</span><span class="n">UserTable</span><span class="o">&gt;</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">UserModel</span><span class="p">();</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// UserModel.cpp</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;UserModel.h&quot;</span><span class="cp"></span>
+
+<span class="n">UserModel</span><span class="o">::</span><span class="n">UserModel</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>嗯，创建一个model 就是如此简单，以 public 的方式继承 IOrmTableModelInterface 并且传入要操作的Table 类型， 如第7行所示，一个 model 就创建号了。</p>
+<p>model 提供方便的内置函数用于增删改查等操作数据库。详情请参考<a href="../model_usage/">Model 的使用</a></p>
+<p>我们举几个例子，改写 main.cpp 如下:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// main.cpp</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;IWebCore&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;UserTable.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;UserModel.h&quot;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">IWebApplication</span><span class="w"> </span><span class="n">app</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">UserModel</span><span class="w"> </span><span class="n">model</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">UserTable</span><span class="w"> </span><span class="n">table1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">table1</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;yuekeyuan&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">model</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">table1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">qDebug</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">table1</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">UserTable</span><span class="w"> </span><span class="n">table2</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">table2</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;zhiyongfei&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">model</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">table2</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">qDebug</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">count</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">qDebug</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">findAll</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">model</span><span class="p">.</span><span class="n">deleted</span><span class="p">(</span><span class="n">table1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">qDebug</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">count</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">qDebug</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">findAll</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">app</span><span class="p">.</span><span class="n">exec</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>一个简单的例子，插入两条数据， 并且删除其中的一条，相关的输出如下：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="mo">00</span><span class="o">:</span><span class="mi">35</span><span class="o">:</span><span class="mi">57</span><span class="o">:</span><span class="w"> </span><span class="n">Starting</span><span class="w"> </span><span class="n">E</span><span class="o">:</span><span class="err">\</span><span class="n">project</span><span class="err">\</span><span class="n">cpp</span><span class="err">\</span><span class="n">IWeb</span><span class="err">\</span><span class="n">build</span><span class="o">-</span><span class="n">IWeb</span><span class="o">-</span><span class="n">Desktop_Qt_5_14_2_MSVC2017_32bit</span><span class="o">-</span><span class="n">Debug</span><span class="err">\</span><span class="n">demo</span><span class="err">\</span><span class="n">OrmDemo</span><span class="err">\</span><span class="n">debug</span><span class="err">\</span><span class="n">OrmDemo</span><span class="p">.</span><span class="n">exe</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
+
+<span class="w"> </span><span class="n">_____</span><span class="w">  </span><span class="n">_</span><span class="w">    </span><span class="n">_</span><span class="w">        </span><span class="n">_</span><span class="w">      </span><span class="n">_____</span><span class="w"></span>
+<span class="o">|</span><span class="n">_</span><span class="w">   </span><span class="n">_</span><span class="o">||</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="o">|</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="o">/</span><span class="w">  </span><span class="n">__</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="n">___</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">|</span><span class="n">__</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="o">/</span><span class="w">  </span><span class="err">\</span><span class="o">/</span><span class="w">  </span><span class="n">___</span><span class="w">   </span><span class="n">_</span><span class="w"> </span><span class="n">__</span><span class="w">  </span><span class="n">___</span><span class="w"></span>
+<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="o">|/</span><span class="err">\</span><span class="o">|</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="err">\</span><span class="o">|</span><span class="w"> </span><span class="err">&#39;</span><span class="n">_</span><span class="w"> </span><span class="err">\</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="o">/</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="err">\</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="err">&#39;</span><span class="n">__</span><span class="o">|/</span><span class="w"> </span><span class="n">_</span><span class="w"> </span>\
+<span class="w"> </span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="o">|</span><span class="n">_</span><span class="w"> </span><span class="err">\</span><span class="w">  </span><span class="o">/</span><span class="err">\</span><span class="w">  </span><span class="o">/|</span><span class="w">  </span><span class="n">__</span><span class="o">/|</span><span class="w"> </span><span class="o">|</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="err">\</span><span class="n">__</span><span class="o">/</span><span class="err">\</span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="o">|</span><span class="w">  </span><span class="n">__</span><span class="o">/</span><span class="w"></span>
+<span class="w"> </span><span class="err">\</span><span class="n">___</span><span class="o">/</span><span class="w">  </span><span class="err">\</span><span class="o">/</span><span class="w">  </span><span class="err">\</span><span class="o">/</span><span class="w">  </span><span class="err">\</span><span class="n">___</span><span class="o">||</span><span class="n">_</span><span class="p">.</span><span class="n">__</span><span class="o">/</span><span class="w">  </span><span class="err">\</span><span class="n">____</span><span class="o">/</span><span class="w"> </span><span class="err">\</span><span class="n">___</span><span class="o">/</span><span class="w"> </span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w">   </span><span class="err">\</span><span class="n">___</span><span class="o">|</span><span class="w"></span>
+
+<span class="n">Load</span><span class="w"> </span><span class="n">SystemEnvironment</span><span class="w"></span>
+<span class="p">[</span><span class="err">√</span><span class="p">]</span><span class="w">  </span><span class="n">Auto</span><span class="w"> </span><span class="n">Load</span><span class="w"> </span><span class="n">Resource</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="n">Finish</span><span class="w"></span>
+<span class="p">[</span><span class="err">√</span><span class="p">]</span><span class="w">  </span><span class="n">Database</span><span class="w"> </span><span class="n">At</span><span class="w"> </span><span class="n">Class</span><span class="o">:</span><span class="w"> </span><span class="n">webCore</span><span class="o">::</span><span class="n">IOrmDataSource</span><span class="p">,</span><span class="w"> </span><span class="n">At</span><span class="w"> </span><span class="n">Connection</span><span class="o">:</span><span class="w"> </span><span class="k">default</span><span class="p">,</span><span class="w"> </span><span class="n">At</span><span class="w"> </span><span class="n">Db</span><span class="o">:</span><span class="w"> </span><span class="n">SqliteDatabase</span><span class="p">.</span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="n">Opened</span><span class="w"></span>
+<span class="s">&quot;select id from UserTable where rowid = :rowid&quot;</span><span class="w"></span>
+<span class="p">{</span><span class="s">&quot;:rowid&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">}</span><span class="w"></span>
+<span class="s">&quot;insert into UserTable ( id, name, country )  values ( :id, :name, :country ) &quot;</span><span class="w"></span>
+<span class="p">{</span><span class="s">&quot;:country&quot;</span><span class="o">:</span><span class="s">&quot;CHINA&quot;</span><span class="p">,</span><span class="s">&quot;:id&quot;</span><span class="o">:</span><span class="n">null</span><span class="p">,</span><span class="s">&quot;:name&quot;</span><span class="o">:</span><span class="s">&quot;yuekeyuan&quot;</span><span class="p">}</span><span class="w"></span>
+<span class="p">{</span><span class="s">&quot;country&quot;</span><span class="o">:</span><span class="s">&quot;CHINA&quot;</span><span class="p">,</span><span class="s">&quot;id&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;yuekeyuan&quot;</span><span class="p">}</span><span class="w"></span>
+<span class="s">&quot;select id from UserTable where rowid = :rowid&quot;</span><span class="w"></span>
+<span class="p">{</span><span class="s">&quot;:rowid&quot;</span><span class="o">:</span><span class="mi">2</span><span class="p">}</span><span class="w"></span>
+<span class="s">&quot;insert into UserTable ( id, name, country )  values ( :id, :name, :country ) &quot;</span><span class="w"></span>
+<span class="p">{</span><span class="s">&quot;:country&quot;</span><span class="o">:</span><span class="s">&quot;CHINA&quot;</span><span class="p">,</span><span class="s">&quot;:id&quot;</span><span class="o">:</span><span class="n">null</span><span class="p">,</span><span class="s">&quot;:name&quot;</span><span class="o">:</span><span class="s">&quot;zhiyongfei&quot;</span><span class="p">}</span><span class="w"></span>
+<span class="p">{</span><span class="s">&quot;country&quot;</span><span class="o">:</span><span class="s">&quot;CHINA&quot;</span><span class="p">,</span><span class="s">&quot;id&quot;</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span><span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;zhiyongfei&quot;</span><span class="p">}</span><span class="w"></span>
+<span class="s">&quot;SELECT COUNT(1) FROM UserTable&quot;</span><span class="w"></span>
+<span class="mi">2</span><span class="w"></span>
+<span class="s">&quot;SELECT * FROM UserTable&quot;</span><span class="w"></span>
+<span class="p">[{</span><span class="s">&quot;country&quot;</span><span class="o">:</span><span class="s">&quot;CHINA&quot;</span><span class="p">,</span><span class="s">&quot;id&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;yuekeyuan&quot;</span><span class="p">},{</span><span class="s">&quot;country&quot;</span><span class="o">:</span><span class="s">&quot;CHINA&quot;</span><span class="p">,</span><span class="s">&quot;id&quot;</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span><span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;zhiyongfei&quot;</span><span class="p">}]</span><span class="w"></span>
+<span class="s">&quot;DELETE FROM UserTable WHERE id = :id&quot;</span><span class="w"></span>
+<span class="p">{</span><span class="s">&quot;:id&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">}</span><span class="w"></span>
+<span class="s">&quot;SELECT COUNT(1) FROM UserTable&quot;</span><span class="w"></span>
+<span class="mi">1</span><span class="w"></span>
+<span class="s">&quot;SELECT * FROM UserTable&quot;</span><span class="w"></span>
+<span class="p">[{</span><span class="s">&quot;country&quot;</span><span class="o">:</span><span class="s">&quot;CHINA&quot;</span><span class="p">,</span><span class="s">&quot;id&quot;</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span><span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;zhiyongfei&quot;</span><span class="p">}]</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>嗯，很大的一群东西，不过输出是正确的。为了简化输出，我们先屏蔽掉 sql 信息，再查看一遍</p>
+<p>在 main 函数前面写上:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// main.cpp</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;IWebCore&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;UserTable.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;UserModel.h&quot;</span><span class="cp"></span>
+
+<span class="n">$EnableSqlInfoPrint</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">IWebApplication</span><span class="w"> </span><span class="nf">app</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">UserModel</span><span class="w"> </span><span class="n">model</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="p">.....</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>注意第7 行，我们已经禁掉 sql info了，当我们再次运行代码时，输出如下:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code> _____  _    _        _      _____
+|_   _|| |  | |      | |    /  __ \
+  | |  | |  | |  ___ | |__  | /  \/  ___   _ __  ___
+  | |  | |/\| | / _ \| &#39;_ \ | |     / _ \ | &#39;__|/ _ \
+ _| |_ \  /\  /|  __/| |_) || \__/\| (_) || |  |  __/
+ \___/  \/  \/  \___||_.__/  \____/ \___/ |_|   \___|
+
+Load SystemEnvironment
+[√]  Auto Load Resource Task Finish
+[√]  Database At Class: webCore::IOrmDataSource, At Connection: default, At Db: SqliteDatabase.db, Opened
+{&quot;country&quot;:&quot;CHINA&quot;,&quot;id&quot;:3,&quot;name&quot;:&quot;yuekeyuan&quot;}
+{&quot;country&quot;:&quot;CHINA&quot;,&quot;id&quot;:4,&quot;name&quot;:&quot;zhiyongfei&quot;}
+3
+[{&quot;country&quot;:&quot;CHINA&quot;,&quot;id&quot;:2,&quot;name&quot;:&quot;zhiyongfei&quot;},{&quot;country&quot;:&quot;CHINA&quot;,&quot;id&quot;:3,&quot;name&quot;:&quot;yuekeyuan&quot;},{&quot;country&quot;:&quot;CHINA&quot;,&quot;id&quot;:4,&quot;name&quot;:&quot;zhiyongfei&quot;}]
+2
+[{&quot;country&quot;:&quot;CHINA&quot;,&quot;id&quot;:2,&quot;name&quot;:&quot;zhiyongfei&quot;},{&quot;country&quot;:&quot;CHINA&quot;,&quot;id&quot;:4,&quot;name&quot;:&quot;zhiyongfei&quot;}]
+</code></pre></div></td></tr></table></div>
+<p>数据库里的结果如下:</p>
+<p><img alt="image-20220226004821541" src="../img/introduction/image-20220226004821541.png" /></p>
+<p>嗯，一切都是对的,刚刚好。（上面最终输出两条数据，是因为 代码执行了两次）</p>
+<p>现在 orm 的鸟瞰已经完成。接下来你可以深入了解: </p>
+<ul>
+<li>bean</li>
+<li>table</li>
+<li>database</li>
+<li>orm</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../bean_usage/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Bean usage" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Bean usage
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../model_usage/" class="md-footer__link md-footer__link--next" aria-label="Next: Model 的使用" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Model 的使用
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d6c3db9e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -5,6 +5,16 @@ site_dir: docs
 plugins:
   - search
   - awesome-pages
+  # - i18n:
+  #   docs_structure: suffix
+  #   languages:
+  #     - locale: en
+  #       name: English
+  #       build: true
+  #     - locale: zh
+  #       default: true
+  #       name: 中文
+  #       build: true
 
 theme:
   name: material
@@ -44,3 +54,26 @@ theme:
     - dockerfile
     - python
     - powershell
+
+markdown_extensions:
+- toc:
+    permalink: true
+- markdown.extensions.codehilite:
+    guess_lang: false
+    linenums: true
+- mdx_include:
+    base_path: docs
+- admonition
+- codehilite:
+    guess_lang: false
+    linenums: true
+- extra
+- pymdownx.superfences:
+    custom_fences:
+    - name: mermaid
+      class: mermaid
+      format: !!python/name:pymdownx.superfences.fence_code_format ''
+- pymdownx.tabbed:
+    alternate_style: true
+- pymdownx.extra
+- pymdownx.tasklist
